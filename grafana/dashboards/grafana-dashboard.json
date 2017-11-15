@@ -16,6 +16,7 @@
     "description": "Hummingbird stats",
     "editable": true,
     "gnetId": 240,
+    "title": "Hummingbird Stats",
     "graphTooltip": 0,
     "hideControls": false,
     "id": null,

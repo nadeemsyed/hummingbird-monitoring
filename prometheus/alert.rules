@@ -1,0 +1,7 @@
+ALERT service_down
+    IF up == 0
+    LABELS { severity = "critical" }
+    ANNOTATIONS {
+    summary = "Instance {{ $labels.instance }} down",
+        description = "{{ $labels.instance }} of job {{ $labels.job }} is down.",
+}

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copied from https://github.com/grafana/grafana-docker/issues/74
+# Copied from https://github.com/grafana/grafana-docker/issues/74 with slight modification
 
 # Script to configure grafana datasources and dashboards.
 # Intended to be run before grafana entrypoint...
@@ -58,9 +58,9 @@ install_dashboards() {
     if [[ -f "${dashboard}" ]]; then
       echo "Installing dashboard ${dashboard}"
 
-      echo "{\"dashboard\": `cat $dashboard`}" > "${dashboard}.wrapped"
+      echo "{\"dashboard\": `cat $dashboard`,\"overwrite\":true,\"inputs\":[{\"name\":\"DS_PROMETHEUS\",\"type\":\"datasource\",\"pluginId\":\"prometheus\",\"value\":\"prometheus\"}]}" > "${dashboard}.wrapped"
 
-      if grafana_api POST /api/dashboards/db "" "${dashboard}.wrapped"; then
+      if grafana_api POST /api/dashboards/import "" "${dashboard}.wrapped"; then
         echo "installed ok"
       else
         echo "install failed"

@@ -1,7 +1,8 @@
 ALERT service_down
     IF up == 0
+    FOR 2m
     LABELS { severity = "critical" }
     ANNOTATIONS {
     summary = "Instance {{ $labels.instance }} down",
         description = "{{ $labels.instance }} of job {{ $labels.job }} is down.",
-}
+    }

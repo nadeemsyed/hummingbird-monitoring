@@ -26,6 +26,7 @@ services:
       - alertmanager:alertmanager
     networks:
       - back-tier
+    container_name: prometheus
     restart: unless-stopped
 
   alertmanager:
@@ -37,6 +38,7 @@ services:
     networks:
       - back-tier
     restart: unless-stopped
+    container_name: alertmanager
     command:
       - '-config.file=/etc/alertmanager/config.yml'
       - '-storage.path=/alertmanager'
@@ -58,4 +60,5 @@ services:
     networks:
       - back-tier
       - front-tier
+    container_name: grafana
     restart: unless-stopped

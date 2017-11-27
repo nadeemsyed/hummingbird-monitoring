@@ -1,7 +1,7 @@
 # Hummingbird Monitoring
 Hummingbird monitoring using Prometheus, Grafana and Alertmanager
 
-###Prerequistes:
+### Prerequistes
 We need [docker](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/) & [docker-compose](https://docs.docker.com/compose/install/) for installation.
 
 
